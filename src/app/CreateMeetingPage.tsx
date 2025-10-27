@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function CreateMeetingPage() {
   const [descriptionInput, setDescriptionInput] = useState("");
-  const [startTimeInput, setStartTiemInput] = useState("");
+  const [startTimeInput, setStartTimeInput] = useState("");
   const [participantsInput, setParticipantsInput] = useState("");
   const [call, setCall] = useState<Call>();
 
@@ -53,7 +53,7 @@ export default function CreateMeetingPage() {
           value={descriptionInput}
           onChange={setDescriptionInput}
         />
-        <StartTimeInput value={startTimeInput} onChange={setStartTiemInput} />
+        <StartTimeInput value={startTimeInput} onChange={setStartTimeInput} />
         <ParticipantInput
           value={participantsInput}
           onChange={setParticipantsInput}
@@ -87,7 +87,7 @@ function DescriptionInput({ value, onChange }: DescriptionInputProps) {
             onChange("");
           }}
         />
-        Add Descriptio
+        Add Description
       </label>
       {active && (
         <label className="space-y- 1 block">
