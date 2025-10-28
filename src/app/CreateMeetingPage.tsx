@@ -252,7 +252,7 @@ function MeetingLink({ call }: MeetingLinkProps) {
         >
           <Copy />
         </button>
-      </div>n
+      </div>
        <a
         href={getMailToLink(
           meetingLink,
