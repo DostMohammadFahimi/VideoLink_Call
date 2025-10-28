@@ -244,7 +244,7 @@ function MeetingLink({ call }: MeetingLinkProps) {
           </Link>
         </span>
         <button
-          title="Copy invitarion link"
+          title="Copy invitation link"
           onClick={() => {
             navigator.clipboard.writeText(meetingLink);
             alert("copied to clipboard");
@@ -252,7 +252,7 @@ function MeetingLink({ call }: MeetingLinkProps) {
         >
           <Copy />
         </button>
-      </div>
+      </div>n
        <a
         href={getMailToLink(
           meetingLink,
