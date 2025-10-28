@@ -1,6 +1,7 @@
 "use client";
 
-import AudioValumeIndicator from "@/components/AudioValumeIndicator";
+import AudioValumeIndicator from "@/components/AudioVolumeIndicator";
+import FlexibleCallLayout from "@/components/FlexibleCallLayout";
 import PermissionPrompt from "@/components/PermissionPrompt";
 import Button, { buttonClassName } from "@/components/‌Button";
 import useLoadCall from "@/hooks/useLoadCall";
@@ -9,6 +10,7 @@ import { useUser } from "@clerk/nextjs";
 import {
   Call,
   CallControls,
+  CallingState,
   DeviceSettings,
   reactionType,
   SpeakerLayout,
@@ -19,7 +21,7 @@ import {
   useStreamVideoClient,
   VideoPreview,
 } from "@stream-io/video-react-sdk";
-import { FunctionSquareIcon, Loader2 } from "lucide-react";
+import { FunctionSquareIcon, Loader2, ReceiptRussianRuble } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -100,7 +102,7 @@ function MeetingScrean() {
         </p>
       )}
       {setupComplete ? (
-        <SpeakerLayout />
+        <CallUI />
       ) : (
         <SetupUI onSetupComplete={handleSetupComplete} />
       )}
@@ -154,6 +156,19 @@ function SetupUI({ onSetupComplete }: SetupUIProps) {
       <Button onClick={onSetupComplete}>Join Meeting</Button>
     </div>
   );
+}
+
+function CallUI(){
+  const {useCallCallingState} = useCallStateHooks();
+
+  const callingState = useCallCallingState();
+
+  if(callingState !== CallingState.JOINED){
+
+
+    return <Loader2 className="mx-auto animate-spin"/>
+  }
+  return <FlexibleCallLayout />
 }
 
 function UpcomingMeetingScreen() {

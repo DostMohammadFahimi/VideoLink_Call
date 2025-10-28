@@ -5,7 +5,7 @@ import {
 } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
 
-export default function AudioValumeIndicator() {
+export default function AudioVolumeIndicator() {
   const { useMicrophoneState } = useCallStateHooks();
   const { isEnabled, mediaStream } = useMicrophoneState();
   const [audioLevel, setAudioLevel] = useState(0);
@@ -32,7 +32,7 @@ export default function AudioValumeIndicator() {
         <div
           className="h-full w-full origin-left bg-blue-500"
           style={{
-            transform: `scalex(${audioLevel / 100})`,
+            transform: `scaleX(${audioLevel / 100})`,
           }}
         />
       </div>
