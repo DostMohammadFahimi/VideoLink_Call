@@ -3,6 +3,7 @@
 import AudioValumeIndicator from "@/components/AudioVolumeIndicator";
 import FlexibleCallLayout from "@/components/FlexibleCallLayout";
 import PermissionPrompt from "@/components/PermissionPrompt";
+import RecordingList from "@/components/RecordingList";
 import Button, { buttonClassName } from "@/components/‌Button";
 import useLoadCall from "@/hooks/useLoadCall";
 import useStreamCall from "@/hooks/useStreamCall";
@@ -77,7 +78,7 @@ function MeetingScrean() {
 
   async function handleSetupComplete() {
     call.join();
-    setSetupComplete(true)
+    setSetupComplete(true);
   }
 
   const callIsInfeature = CallStartsAt && new Date(CallStartsAt) > new Date();
@@ -149,7 +150,7 @@ function SetupUI({ onSetupComplete }: SetupUIProps) {
         <input
           type="checkbox"
           checked={micCamDisabled}
-          onChange={(e)=> setMicCamDisabled(e.target.checked)}
+          onChange={(e) => setMicCamDisabled(e.target.checked)}
         />
         Join with mic and camera off.
       </label>
@@ -158,17 +159,15 @@ function SetupUI({ onSetupComplete }: SetupUIProps) {
   );
 }
 
-function CallUI(){
-  const {useCallCallingState} = useCallStateHooks();
+function CallUI() {
+  const { useCallCallingState } = useCallStateHooks();
 
   const callingState = useCallCallingState();
 
-  if(callingState !== CallingState.JOINED){
-
-
-    return <Loader2 className="mx-auto animate-spin"/>
+  if (callingState !== CallingState.JOINED) {
+    return <Loader2 className="mx-auto animate-spin" />;
   }
-  return <FlexibleCallLayout />
+  return <FlexibleCallLayout />;
 }
 
 function UpcomingMeetingScreen() {
@@ -202,6 +201,10 @@ function MeetingEndedScreen() {
       <Link href="/" className={buttonClassName}>
         Go Home
       </Link>
+      <div className="space-y-3">
+        <h2 className="text-center text-xl font-bold">Recordings</h2>
+        <RecordingList />
+      </div>
     </div>
   );
 }
