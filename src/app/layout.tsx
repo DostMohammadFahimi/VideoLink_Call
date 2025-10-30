@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "VideoLink_Call",
   description: "Next Video streaming vidoe calling",
+  icons: {
+    icon: "/favicon.png", 
+  },
 };
 
 export default function RootLayout({
